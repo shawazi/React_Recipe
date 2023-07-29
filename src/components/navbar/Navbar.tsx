@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 const StyledDiv = styled('div')`
   position: fixed;
-  background-color: white;
+  background-color: teal;
   width: 100%;
   top: 0;
   display: flex;
@@ -13,12 +13,12 @@ const StyledDiv = styled('div')`
   a {
     display: inline-block;
     padding: 2px 16px;
-    margin: 2px 0;
+    margin: 5px 0;
     text-decoration: none;
-    color: #333;
-    background-color: white;
+    color: black;
+    background-color: gray;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     user-select: none;
