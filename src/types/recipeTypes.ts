@@ -1,5 +1,6 @@
 export interface Recipe {
     recipe: {
+      id: number;
       label: string;
       mealType: Array<String>;
       cuisineType: Array<string>;

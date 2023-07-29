@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { useEffect, useState, ChangeEvent, FormEvent, MouseEventHandler } from "react";
 import { StyledMain, StyledSearch, StyledWrapResults, StyledResults } from "../home/styled";
 import { Link } from "react-router-dom";
 import { useRecipeContext } from "../../context/RecipeContext";
 
 const Home = () => {
-  const { data, setData } = useRecipeContext();
+  const { data, setData, setSelectedRecipe } = useRecipeContext();
   const [query, setQuery] = useState("steak");
   const [meal, setMeal] = useState("dinner");
   const APP_ID = import.meta.env.VITE_APP_ID;
@@ -23,7 +23,6 @@ const Home = () => {
     .then(resp => {
       console.log(resp?.data?.hits);
       console.log("Running 'getData()'");
-      console.log(url)
       setData(resp?.data?.hits || []);
     })
     .catch(Error => {
@@ -42,6 +41,25 @@ const Home = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     getData()
+  }
+
+  const handleDetails: MouseEventHandler <HTMLAnchorElement> = (e) => {
+    const linkElement = e.currentTarget as HTMLAnchorElement;
+    const cardElement = linkElement.parentElement;
+    const indexAtt = cardElement?.getAttribute("data-index") || "";;
+    console.log(indexAtt)
+  
+    if (indexAtt !== null) {
+      const index: string = indexAtt
+      const parsedIndex = parseInt(index, 10);
+      const clickedRecipe = data?.[parsedIndex]?.recipe;
+      console.log(clickedRecipe)
+      
+      if (clickedRecipe) {
+        setSelectedRecipe({recipe: clickedRecipe});
+      }
+    }
+
   }
 
   return (
@@ -65,10 +83,10 @@ const Home = () => {
       </StyledSearch>
       <StyledWrapResults>
       {data?.map((recipe, index) => (
-        <StyledResults key={index}>
+        <StyledResults key={index} data-index={index}>
           <h2>{recipe.recipe.label}</h2>
           <img height="200px" width="200px" src={recipe.recipe.image} />
-          <Link to="/details"><strong>More Info</strong></Link>
+          <Link to="/details" onClick={handleDetails}><strong>More Info</strong></Link>
         </StyledResults>  
       ))}
       </StyledWrapResults>

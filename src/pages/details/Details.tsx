@@ -1,21 +1,23 @@
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecipeContext } from "../../context/RecipeContext";
+import { useEffect } from "react";
 
 const Details = () => {
-  const { id } = useParams(); // Extract the recipe ID from the URL params
-  const { data } = useRecipeContext();
-  const recipe = data.find((r) => r.id === id); // Find the specific recipe based on ID
+  const { selectedRecipe } = useRecipeContext();
+  const navigate = useNavigate();
 
-  if (!recipe) {
-    return <div>Loading...</div>; // You might want to show a loader while fetching the specific recipe details.
-  }
+  useEffect((): void => {
+    if (!selectedRecipe) {
+      navigate('/');
+      console.log("No ID");
+      return;
+    }
+  }, []);
 
   return (
     <div>
-      {/* Render the detailed information of the recipe */}
-      <h2>{recipe.recipe.label}</h2>
-      <p>Meal Type: {recipe.recipe.mealType.join(", ")}</p>
-      {/* Other details you want to display */}
+      <h2>{selectedRecipe?.recipe.label}</h2>
+      <p>Meal Type: {selectedRecipe?.recipe.mealType.join(", ")}</p>
     </div>
   );
 };
