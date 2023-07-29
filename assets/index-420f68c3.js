@@ -164,7 +164,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   background-color: black;
   text-align: center;
 `,RecipeTitle=st.h2`
-  color: #333;
+  color: teal;
 `,RecipeImage=st.img`
   width: 100%;
   max-height: 300px;
@@ -177,6 +177,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   margin-bottom: 20px;
 `,RecipeLabel=st.span`
   font-weight: bold;
+  color: teal;
 `,RecipeValue=st.span`
   margin-left: 5px;
 `,RecipeIngredients=st.ul`
@@ -205,7 +206,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,Details=()=>{const{selectedRecipe:e}=useRecipeContext(),i=useNavigate();reactExports.useEffect(()=>{if(!e){i("/"),console.log("No ID");return}},[]);const{label:a,calories:o,yield:s,image:c,url:d,source:g,ingredients:b,healthLabels:it}=(e==null?void 0:e.recipe)||{};return jsxRuntimeExports.jsxs(RecipeWrapper,{children:[jsxRuntimeExports.jsx(RecipeTitle,{children:a}),jsxRuntimeExports.jsx(RecipeImage,{src:c,alt:a}),jsxRuntimeExports.jsxs(RecipeInfo,{children:[jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx(RecipeLabel,{children:"Calories:"}),jsxRuntimeExports.jsx(RecipeValue,{children:o==null?void 0:o.toFixed(2)})]}),jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx(RecipeLabel,{children:"Yield:"}),jsxRuntimeExports.jsx(RecipeValue,{children:s})]}),jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx(RecipeLabel,{children:"Source: "}),jsxRuntimeExports.jsx(RecipeSourceLink,{href:d,target:"_blank",rel:"noopener noreferrer",children:g})]})]}),jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx(RecipeLabel,{children:"Ingredients:"}),jsxRuntimeExports.jsx(RecipeIngredients,{children:b==null?void 0:b.map((ut,dt)=>jsxRuntimeExports.jsx(RecipeIngredient,{children:ut.text},dt))})]}),jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx(RecipeLabel,{children:"Health Labels:"}),jsxRuntimeExports.jsx(RecipeHealthLabels,{children:it==null?void 0:it.map((ut,dt)=>jsxRuntimeExports.jsx(RecipeHealthLabel,{children:ut},dt))})]})]})},Login=()=>jsxRuntimeExports.jsx("div",{children:"Login"}),StyledDiv=st("div")`
   position: fixed;
-  background-color: white;
+  background-color: teal;
   width: 100%;
   top: 0;
   display: flex;
@@ -215,12 +216,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   a {
     display: inline-block;
     padding: 2px 16px;
-    margin: 2px 0;
+    margin: 5px 0;
     text-decoration: none;
-    color: #333;
-    background-color: white;
+    color: black;
+    background-color: gray;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     user-select: none;
