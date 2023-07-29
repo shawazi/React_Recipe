@@ -16,7 +16,7 @@ const StyledDiv = styled('div')`
     margin: 5px 0;
     text-decoration: none;
     color: black;
-    background-color: gray;
+    background-color: silver;
     border: 1px solid #ccc;
     border-radius: 10px;
     cursor: pointer;

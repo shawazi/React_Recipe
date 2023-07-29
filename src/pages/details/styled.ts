@@ -70,3 +70,35 @@ export const RecipeSourceLink = styled.a`
     text-decoration: underline;
   }
 `;
+
+// Wrapper for the nutrition information
+export const NutritionWrapper = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+// Styled list for displaying the nutrition data
+export const NutritionList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
+// Styled list item for nutrition data
+export const NutritionListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+`;
+
+// Button to hide/unhide the nutrition information
+export const ToggleButton = styled.button`
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+`;

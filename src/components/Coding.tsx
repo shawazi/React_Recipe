@@ -5,7 +5,7 @@ const Coding = () => {
   const options = {
     animationData: coding,
     loop: true,
-    autoplay: true
+    autoplay: true,
   };
   const { View } = useLottie(options);
   return <>{View}</>;

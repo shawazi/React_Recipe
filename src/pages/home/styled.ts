@@ -4,6 +4,7 @@ export const StyledMain = styled('main')`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3%;
 `
 
 export const StyledSearch = styled.div`
@@ -18,6 +19,7 @@ export const StyledSearch = styled.div`
   gap: 10px;
   color: #333;
   font-family: Arial, sans-serif;
+  margin-bottom: 3%;
 
   form {
     display: flex;
@@ -74,4 +76,9 @@ export const StyledResults = styled('div')`
   margin: 1rem;
   width: 350px;
   height: 350px;
+  transition: transform 0.3s ease; /* Add the transition property */
+
+  &:hover {
+    transform: scale(1.15); /* Increase the size by 15% on hover */
+  }
 `
