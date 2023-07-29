@@ -17,9 +17,14 @@ export const RecipeTitle = styled.h2`
 export const RecipeImage = styled.img`
   width: 100%;
   max-height: 300px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease; /* Add the transition property */
+
+  &:hover {
+    transform: scale(1.15); /* Increase the size by 15% on hover */
+  }
 `;
 
 export const RecipeInfo = styled.div`
@@ -97,8 +102,14 @@ export const ToggleButton = styled.button`
   background-color: teal;
   color: white;
   border: none;
+  border-radius: 10px;
   padding: 8px 16px;
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
+  transition: transform 0.3s ease; /* Add the transition property */
+
+  &:hover {
+    transform: scale(1.15); /* Increase the size by 15% on hover */
+  }
 `;

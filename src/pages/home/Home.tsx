@@ -3,10 +3,11 @@ import { useEffect, useState, ChangeEvent, FormEvent, MouseEventHandler } from "
 import { StyledMain, StyledSearch, StyledWrapResults, StyledResults } from "../home/styled";
 import { Link } from "react-router-dom";
 import { useRecipeContext } from "../../context/RecipeContext";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const { data, setData, setSelectedRecipe } = useRecipeContext();
-  const [query, setQuery] = useState("steak");
+  const [query, setQuery] = useState("");
   const [meal, setMeal] = useState("dinner");
   const APP_ID = import.meta.env.VITE_APP_ID;
   const APP_KEY = import.meta.env.VITE_APP_KEY;
@@ -26,7 +27,7 @@ const Home = () => {
       setData(resp?.data?.hits || []);
     })
     .catch(Error => {
-      console.log(Error)
+      toast.error(Error)
     })
   }
 
