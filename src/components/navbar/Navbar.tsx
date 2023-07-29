@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import { useAuthContext } from "../../context/AuthContext"
 
 const StyledDiv = styled('div')`
   position: fixed;
@@ -29,15 +30,20 @@ const StyledDiv = styled('div')`
   }
 `;
 
-  const Navbar = ({children}: any) => {
+const Navbar = ({ children }: any) => {
+  const { isLoggedIn, setLoggedIn } = useAuthContext()
+
   return (
     <>
       <StyledDiv>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        {/* <Link to="/contact">Contact</Link> */}
-        <Link to="/login">Logout</Link>
-      </StyledDiv>
+        {isLoggedIn ? 
+          <Link to="/login" onClick={() => setLoggedIn(false)}>Logout</Link>
+        :
+          <Link to="/login">Login</Link>
+        }
+        </StyledDiv>
       {children}
     </>
   )
