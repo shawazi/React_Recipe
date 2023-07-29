@@ -3,6 +3,7 @@ import { useAuthContext } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "../../firebase.ts";
+import { toast } from 'react-toastify';
 
 app;
 const provider = new GoogleAuthProvider();
@@ -41,6 +42,7 @@ const Login = () => {
   const handleLogin = () => {
     setLoggedIn(true)
     navigate("/")
+    toast.success("You've successfully signed in.")
   }
 
   const handleSignInWithGoogle = () => {
@@ -64,6 +66,7 @@ const Login = () => {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       console.log(errorCode, errorMessage, email, credential)
+      toast.error(`Error: ${error}`)
     });
     console.log("Signing in with google");
   }
