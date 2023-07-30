@@ -7,7 +7,8 @@ interface AuthContextType {
   setUsername: (username: string) => void;
   password: string;
   setPassword: (password: string) => void;
-
+  email: string;
+  setEmail: (email: string) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -17,7 +18,8 @@ const AuthContext = createContext<AuthContextType>({
   setUsername: () => {},
   password: "",
   setPassword: () => {},
-
+  email: "",
+  setEmail: () => {},
 });
 
 export const useAuthContext = () => useContext(AuthContext);
@@ -26,9 +28,10 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const [email, setEmail] = useState<string>("")
   
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, setUsername, setPassword, username, password }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, setUsername, setPassword, username, password, email, setEmail }}>
       {children}
     </AuthContext.Provider>
   );

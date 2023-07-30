@@ -78,7 +78,6 @@ const Home = () => {
         <strong>Please enter your search query below!</strong>
         <form action="submit" onSubmit={handleSubmit}>
           <input type="text" value={query} onChange={handleChange}/>
-          {/* <label htmlFor="mealtime">Choose a meal time: </label> */}
           <select id="mealtime" name="mealtime" onChange={handleMeal} >
             <option value="breakfast">Breakfast</option>
             <option value="lunch">Lunch</option>
