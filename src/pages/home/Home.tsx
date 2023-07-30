@@ -73,7 +73,7 @@ const Home = () => {
   return (
     <StyledMain>
       <h1>A Recipe App</h1>
-      <h3>Powered by Edamam</h3>
+      <h3>Powered by <a style={{textDecoration: "none", color: "green",}} href="https://www.edamam.com/" target="_blank">Edamam</a></h3>
       <StyledSearch>
         <strong>Please enter your search query below!</strong>
         <form action="submit" onSubmit={handleSubmit}>
