@@ -17,6 +17,7 @@ const AuthContext = createContext<AuthContextType>({
   setUsername: () => {},
   password: "",
   setPassword: () => {},
+
 });
 
 export const useAuthContext = () => useContext(AuthContext);

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { useAuthContext } from "../../context/AuthContext"
+import { toast } from "react-toastify";
 
 const StyledDiv = styled('div')`
   position: fixed;
@@ -32,6 +33,10 @@ const StyledDiv = styled('div')`
 
 const Navbar = ({ children }: any) => {
   const { isLoggedIn, setLoggedIn } = useAuthContext()
+  const handleLogout = () => {
+    setLoggedIn(false)
+    toast.success("Successfully logged out.")
+  }
 
   return (
     <>
@@ -39,7 +44,7 @@ const Navbar = ({ children }: any) => {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         {isLoggedIn ? 
-          <Link to="/login" onClick={() => setLoggedIn(false)}>Logout</Link>
+          <Link to="/login" onClick={handleLogout}>Logout</Link>
         :
           <Link to="/login">Login</Link>
         }

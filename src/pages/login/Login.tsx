@@ -42,6 +42,7 @@ const Login = () => {
   const handleLogin = () => {
     setLoggedIn(true)
     navigate("/")
+    
     toast.success("You've successfully signed in.")
   }
 
@@ -62,13 +63,11 @@ const Login = () => {
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
-      const email = error.customData.email;
+      // const email = error.customData.email;
       // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(errorCode, errorMessage, email, credential)
-      toast.error(`Error: ${error}`)
+      // const credential = GoogleAuthProvider.credentialFromError(error);
+      toast.error(`Error: ${errorCode} - ${errorMessage}`)
     });
-    console.log("Signing in with google");
   }
 
 

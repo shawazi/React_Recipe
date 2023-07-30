@@ -6,25 +6,29 @@ import { useRecipeContext } from "../../context/RecipeContext";
 import { toast } from "react-toastify";
 
 const Home = () => {
-  const { data, setData, setSelectedRecipe } = useRecipeContext();
+  const { data, setData, setSelectedRecipe, dataCache, updateDataCache } = useRecipeContext();
   const [query, setQuery] = useState("");
   const [meal, setMeal] = useState("dinner");
   const APP_ID = import.meta.env.VITE_APP_ID;
   const APP_KEY = import.meta.env.VITE_APP_KEY;
-
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${meal}`;
 
   useEffect(() => {
-    getData()
+    if (!dataCache[url]) {
+      getData()
+      console.log("Data called from Edamam")
+    } else {
+      setData(dataCache[url])
+    }
   }, [])
 
   const getData = () => {
-    const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${meal}`;
+
 
     axios.get(url)
     .then(resp => {
-      console.log(resp?.data?.hits);
-      console.log("Running 'getData()'");
       setData(resp?.data?.hits || []);
+      updateDataCache(url, resp?.data?.hits || []);
     })
     .catch(Error => {
       toast.error(Error)
@@ -41,20 +45,22 @@ const Home = () => {
   
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    getData()
+    if (!dataCache[url]) {
+      getData()
+    } else {
+      setData(dataCache[url])
+    }
   }
 
   const handleDetails: MouseEventHandler <HTMLAnchorElement> = (e) => {
     const linkElement = e.currentTarget as HTMLAnchorElement;
     const cardElement = linkElement.parentElement;
     const indexAtt = cardElement?.getAttribute("data-index") || "";;
-    console.log(indexAtt)
   
     if (indexAtt !== null) {
       const index: string = indexAtt
       const parsedIndex = parseInt(index, 10);
       const clickedRecipe = data?.[parsedIndex]?.recipe;
-      console.log(clickedRecipe)
       
       if (clickedRecipe) {
         setSelectedRecipe({recipe: clickedRecipe});
@@ -62,6 +68,7 @@ const Home = () => {
     }
 
   }
+
 
   return (
     <StyledMain>
