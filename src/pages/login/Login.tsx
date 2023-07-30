@@ -68,6 +68,7 @@ const Login = () => {
         console.log(token, user)
         setLoggedIn(true)
         navigate("/")
+        toast.success("Successfully logged in.")
       }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
@@ -99,7 +100,7 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        toast.error(errorCode + ": " + errorMessage)
+        toast.error(`${errorCode}: ${errorMessage}`)
       });
 
   }
