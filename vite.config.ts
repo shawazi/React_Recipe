@@ -1,8 +1,20 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
+
+const conditionalPlugins = [];
+
+if (process.env.MIGHTYMELD) {
+  conditionalPlugins.push('@mightymeld/runtime/babel-plugin-mightymeld');
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/' : '/',
-  plugins: [react()],
+  plugins: [react({
+    babel: {
+      plugins: [...conditionalPlugins]
+    }
+  })
+],
 })
+

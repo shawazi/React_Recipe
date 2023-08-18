@@ -1,0 +1,11 @@
+{
+    "run": "npm run dev",
+  
+    "include": ["src"],
+  
+    "run_prettier": true,
+  
+    "web_server_url": "http://localhost:5173",
+  
+    "main_branch": "master"
+  }
