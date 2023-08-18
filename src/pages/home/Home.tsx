@@ -4,6 +4,17 @@ import { StyledMain, StyledSearch, StyledWrapResults, StyledResults } from "../h
 import { Link } from "react-router-dom";
 import { useRecipeContext } from "../../context/RecipeContext";
 import { toast } from "react-toastify";
+import styled from "styled-components";
+const StyledSearchText = styled.strong`
+  color: #040127;
+  background: #004500;
+  border-radius: 5px;
+  background-color: #004500;
+`;
+const StyledLabels = styled.h2`
+color: #000000;
+border: 1px solid #000000;
+border-radius: 5px;`;
 
 const Home = () => {
   const { data, setData, setSelectedRecipe, dataCache, updateDataCache } = useRecipeContext();
@@ -72,10 +83,12 @@ const Home = () => {
 
   return (
     <StyledMain>
-      <h1>A Recipe App</h1>
-      <h3>Powered by <a style={{textDecoration: "none", color: "green",}} href="https://www.edamam.com/" target="_blank">Edamam</a></h3>
+      <h3>Powered by <a style={{
+    textDecoration: "none",
+    color: "green"
+  }} href="https://www.edamam.com/" target="_blank">Edamam</a></h3><h1>A Recipe App by Shawaz</h1>
       <StyledSearch>
-        <strong>Please enter your search query below!</strong>
+        <StyledSearchText>Please enter your search query below!</StyledSearchText>
         <form action="submit" onSubmit={handleSubmit}>
           <input type="text" value={query} onChange={handleChange}/>
           <select id="mealtime" name="mealtime" onChange={handleMeal} >
@@ -91,7 +104,7 @@ const Home = () => {
       <StyledWrapResults>
       {data?.map((recipe, index) => (
         <StyledResults key={index} data-index={index}>
-          <h2>{recipe.recipe.label}</h2>
+          <StyledLabels>{recipe.recipe.label}</StyledLabels>
           <img height="200px" width="200px" src={recipe.recipe.image} />
           <Link to="/details" onClick={handleDetails}><strong>More Info</strong></Link>
         </StyledResults>  

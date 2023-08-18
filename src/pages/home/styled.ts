@@ -8,7 +8,7 @@ export const StyledMain = styled('main')`
 `
 
 export const StyledSearch = styled.div`
-  background-color: #f0f0f0;
+  background-color: #e94747;
   width: 100%;
   max-width: 400px;
   padding: 10px;
@@ -20,21 +20,18 @@ export const StyledSearch = styled.div`
   color: #333;
   font-family: Arial, sans-serif;
   margin-bottom: 3%;
-
   form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
   }
-
   input {
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     flex: 1;
   }
-
   button {
     padding: 8px 20px;
     background-color: #007bff;
@@ -45,11 +42,9 @@ export const StyledSearch = styled.div`
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-
   button:hover {
     background-color: #0056b3;
   }
-
   @media (max-width: 480px) {
     max-width: 100%;
     padding: 20px;
